@@ -11,5 +11,5 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
-CMD touch database/database.sqlite && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=10000
+CMD touch database/database.sqlite && php artisan migrate --force && php artisan db:seed --class=WordSeeder --force && php artisan serve --host=0.0.0.0 --port=10000
 EXPOSE 10000
